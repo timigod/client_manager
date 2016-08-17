@@ -4,7 +4,7 @@ module ClientManager
   class SessionsController < ApplicationController
 
     def login
-      flash[:notice] = "You signed up successfully"
+      
     end
 
   end
