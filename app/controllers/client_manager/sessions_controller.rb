@@ -4,7 +4,7 @@ module ClientManager
   class SessionsController < ApplicationController
 
     def login
-      
+
     end
 
   end

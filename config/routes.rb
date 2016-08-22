@@ -1,5 +1,5 @@
 ClientManager::Engine.routes.draw do
-  root to: 'sessions#login'
+  root to: 'users#index'
   get 'login', to: 'sessions#login'
-  get 'test_flash', to: 'sessions#test_flash'
+  resources :users, only: [:index, :new, :create]
 end

@@ -1,0 +1,145 @@
+<div id="page-container" class="header-navbar-fixed">
+  <header id="header-navbar" class="content-mini content-mini-full">
+    <ul class="nav-header pull-right">
+      <li>
+        <a href="<%= new_user_path %>" class="btn btn-success" data-toggle="modal" data-target="#modal-new-user"><i
+        class="fa fa-plus"></i></a>
+      </li>
+      <li>
+        <a href="login.html" class="btn btn-default" type="button">
+          <i class="fa fa-sign-out"></i>
+        </a>
+      </li>
+    </ul>
+  </header>
+
+  <main id="main-container">
+    <div class="content bg-gray-lighter">
+      <div class="row items-push">
+        <div class="col-sm-7">
+          <h1 class="page-heading">
+            Users
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="block">
+
+        <div class="block-content">
+          <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
+          <table class="table table-bordered table-striped js-dataTable-full">
+            <thead>
+            <tr>
+              <th class="text-center"></th>
+              <th>Name</th>
+              <th class="hidden-xs">Email</th>
+              <th class="hidden-xs">Clients</th>
+              <th class="text-center" style="width: 10%;">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="text-center">1</td>
+              <td class="font-w600">Daberechi Ukoha-Kalu</td>
+              <td class="hidden-xs">ukohakaludabererchi@gmail.com</td>
+              <td class="hidden-xs">2</td>
+              <td class="text-center">
+                <div class="btn-group">
+                  <a href="#" data-toggle="modal" data-target="#modal-new-user"><i
+                  class="fa fa-pencil"></i></a>
+                  <a href="#"><i class="fa fa-times text-danger"></i></a>
+
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center">2</td>
+              <td class="font-w600">Timi Ajiboye</td>
+              <td class="hidden-xs">timi@helloworld.ng</td>
+              <td class="hidden-xs">2</td>
+              <td class="text-center">
+                <div class="btn-group">
+                  <a href="#" data-toggle="modal" data-target="#modal-new-user"><i
+                  class="fa fa-pencil"></i></a>
+                  <a href="#"><i class="fa fa-times text-danger"></i></a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center">3</td>
+              <td class="font-w600">Ogochukwu Augustine</td>
+              <td class="hidden-xs">oggyauggy@gmail.com</td>
+              <td class="hidden-xs">2</td>
+              <td class="text-center">
+                <div class="btn-group">
+                  <a href="#" data-toggle="modal" data-target="#modal-new-user"><i
+                  class="fa fa-pencil"></i></a>
+                  <a href="#"><i class="fa fa-times text-danger"></i></a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center">4</td>
+              <td class="font-w600">Tony Flair Blair</td>
+              <td class="hidden-xs">tfb4real@gmail.com</td>
+              <td class="hidden-xs">2</td>
+              <td class="text-center">
+                <div class="btn-group">
+                  <a href="#" data-toggle="modal" data-target="#modal-new-user"><i
+                  class="fa fa-pencil"></i></a>
+                  <a href="#"><i class="fa fa-times text-danger"></i></a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center">5</td>
+              <td class="font-w600">Shaki Tibobo</td>
+              <td class="hidden-xs">bobo@gmail.com</td>
+              <td class="hidden-xs">2</td>
+              <td class="text-center">
+                <div class="btn-group">
+                  <a href="#" data-toggle="modal" data-target="#modal-new-user"><i
+                  class="fa fa-pencil"></i></a>
+                  <a href="#"><i class="fa fa-times text-danger"></i></a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center">6</td>
+              <td class="font-w600">Blessing Okagbare</td>
+              <td class="hidden-xs">catchmeifyoucan@yahoo.co.uk</td>
+              <td class="hidden-xs">2</td>
+              <td class="text-center">
+                <div class="btn-group">
+                  <a href="#" data-toggle="modal" data-target="#modal-new-user"><i
+                  class="fa fa-pencil"></i></a>
+                  <a href="#"><i class="fa fa-times text-danger"></i></a>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+<div class="modal fade" id="modal-new-user" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-popout">
+    <div class="modal-content">
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+  $(function () {
+    $('#modal-new-user').on('hidden.bs.modal', function () {
+      $(this).removeData('bs.modal');
+    });
+  });
+</script>

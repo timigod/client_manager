@@ -1,6 +1,6 @@
 module ClientManager
   class ApplicationMailer < ActionMailer::Base
-    default from: 'from@example.com'
+    default from: 'client-manager@example.com'
     layout 'mailer'
   end
 end
