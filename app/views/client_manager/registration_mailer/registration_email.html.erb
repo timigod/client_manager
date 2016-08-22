@@ -48,13 +48,14 @@
   <tr>
     <td align="center" bgcolor="#ffffff"
         style="padding: 40px 20px 0 20px; color: #555555; font-family: Arial, sans-serif; font-size: 20px; line-height: 30px;">
-      <b>You can now use <%= @application_name %>'s API</b>
+      <b>Hey <%= @user.name %>, <br>
+        You can now use <%= @application_name %>'s API</b>
     </td>
   </tr>
   <tr>
     <td align="center" bgcolor="#ffffff"
         style="padding: 0 20px 40px 20px; color: #777777; font-family: Arial, sans-serif; font-size: 18px; line-height: 30px; border-bottom: 1px solid #f6f6f6;">
-      Password: ddoqd2r03r32kjec
+      Password: <%= @user.password %>
     </td>
   </tr>
   <tr>
@@ -70,7 +71,8 @@
           <td align="center" height="55"
               style=" padding: 0 35px 0 35px; font-family: Arial, sans-serif; font-size: 22px;"
               class="button">
-            <a href="#" style="color: #ffffff; text-align: center; text-decoration: none;">Go To
+            <!--TODO change URL-->
+            <a href="<%= @url %>" style="color: #ffffff; text-align: center; text-decoration: none;">Go To
               ClientManager</a>
           </td>
         </tr>

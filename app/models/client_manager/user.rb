@@ -7,11 +7,13 @@ module ClientManager
     default_scope { order('created_at DESC') }
     validates :name, :email, presence: true
     validates :email, presence: true, uniqueness: true, email: true
-    validates_length_of :password, in: 6..20, on: :create
+    validates_length_of :password, in: 6..20, allow_blank: true
     before_create :set_temporary_password
     before_create :send_registration_email
     before_save :encrypt_password
     after_save :clear_password
+
+    has_many :clients
 
     def self.authenticate(email="", login_password="")
       user = User.find_by_email(email)
@@ -22,14 +24,19 @@ module ClientManager
       end
     end
 
+
+    def client_count
+      clients.count
+    end
+
     private
 
     def set_temporary_password
-      self.password = SecureRandom.hex(4)
+      self.password = SecureRandom.hex(6)
     end
 
     def send_registration_email
-
+      RegistrationMailer.registration_email(self).deliver
     end
 
     def encrypt_password
