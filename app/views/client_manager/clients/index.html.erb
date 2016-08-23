@@ -1,0 +1,123 @@
+<div id="page-container" class="header-navbar-fixed">
+
+  <header id="header-navbar" class="content-mini content-mini-full">
+    <ul class="nav-header pull-right">
+      <li>
+        <a href="new-client.html" class="btn btn-success" data-toggle="modal" data-target="#modal-new-client"><i
+        class="fa fa-plus"></i></a>
+      </li>
+      <li>
+        <a href="login.html" class="btn btn-default" type="button">
+          <i class="fa fa-sign-out"></i>
+        </a>
+      </li>
+    </ul>
+  </header>
+
+  <main id="main-container">
+    <div class="content bg-gray-lighter">
+      <div class="row items-push">
+        <div class="col-sm-7">
+          <h1 class="page-heading">
+            Clients
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-grid push-50">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="block block-link-hover3" href="javascript:void(0)">
+              <div class="block-content block-content-full clearfix">
+                <a href="#"><i class="fa fa-trash fa-2x text-danger text-muted pull-right"></i></a>
+                <a href="#" data-toggle="modal" data-target="#modal-view-client"><i
+                class="fa fa-eye fa-2x text-primary text-muted pull-right"></i></a>
+                <span class="h4 font-w700">Angular (User Facing)</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="block block-link-hover3" href="javascript:void(0)">
+              <div class="block-content block-content-full clearfix">
+                <a href="#"><i class="fa fa-trash fa-2x text-danger text-muted pull-right"></i></a>
+                <a href="#" data-toggle="modal" data-target="#modal-view-client"><i
+                class="fa fa-eye fa-2x text-primary text-muted pull-right"></i></a>
+
+                <span class="h4 font-w700">Angular (Admin Dashboard)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+<div class="modal fade" id="modal-view-client" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-popout">
+    <form class="form-horizontal push-5-t" method="post" onsubmit="return false;">
+      <div class="modal-content">
+        <div class="block block-themed block-transparent remove-margin-b">
+          <div class="block-header bg-primary-dark">
+            <ul class="block-options">
+              <li>
+                <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+              </li>
+            </ul>
+            <h3 class="block-title">Angular (User Facing)</h3>
+          </div>
+          <div class="block-content">
+            <div class="form-group">
+              <label class="col-xs-12">Token</label>
+              <div class="col-xs-12">
+                <input class="form-control" type="text" value="WFWEe3290ff32ud21rfinckack"
+                       disabled="true">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="btn btn-sm btn-primary" type="button"><i
+              class="fa fa-check"></i>
+                Refresh Token</a>
+              <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-new-client" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-popout">
+    <form class="form-horizontal push-5-t" method="post" onsubmit="return false;">
+      <div class="modal-content">
+        <div class="block block-themed block-transparent remove-margin-b">
+          <div class="block-header bg-primary-dark">
+            <ul class="block-options">
+              <li>
+                <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+              </li>
+            </ul>
+            <h3 class="block-title">New Client</h3>
+          </div>
+          <div class="block-content">
+            <div class="form-group">
+              <label class="col-xs-12">Client Name</label>
+              <div class="col-xs-12">
+                <input class="form-control" type="text" placeholder="iOS">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="btn btn-sm btn-primary" type="button"><i
+              class="fa fa-check"></i>
+                Save</a>
+              <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>s
