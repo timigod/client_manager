@@ -14,11 +14,11 @@
           <!-- Login Form -->
           <!-- jQuery Validation (.js-validation-login class is initialized in js/pages/base_pages_login.js) -->
           <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-          <%= form_tag({}, class: "js-validation-login form-horizontal push-30-t") do %>
+          <%= form_tag({action: :login_attempt}, class: "js-validation-login form-horizontal push-30-t") do %>
               <div class="form-group">
                 <div class="col-xs-12">
                   <div class="form-material form-material-primary floating">
-                    <%= text_field_tag(:username_or_email, "", class: "form-control", id: "login-email", name: "login-email") %>
+                    <%= text_field_tag(:email, "", class: "form-control", id: "login-email") %>
                     <label for="login-email">Email</label>
                   </div>
                 </div>
@@ -26,7 +26,7 @@
               <div class="form-group">
                 <div class="col-xs-12">
                   <div class="form-material form-material-primary floating">
-                    <%= text_field_tag(:login_password, "", class: "form-control", id: "login-password", name: "login-password") %>
+                    <%= password_field_tag(:login_password, "", class: "form-control", id: "login-password", name: "login-password") %>
                     <label for="login-password">Password</label>
                   </div>
                 </div>

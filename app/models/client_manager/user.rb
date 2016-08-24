@@ -24,6 +24,10 @@ module ClientManager
       end
     end
 
+    def match_password(login_password="")
+      encrypted_password == BCrypt::Engine.hash_secret(login_password, salt)
+    end
+
 
     def client_count
       clients.count
@@ -48,10 +52,6 @@ module ClientManager
 
     def clear_password
       self.password = nil
-    end
-
-    def match_password(login_password="")
-      encrypted_password == BCrypt::Engine.hash_secret(login_password, salt)
     end
   end
 end
