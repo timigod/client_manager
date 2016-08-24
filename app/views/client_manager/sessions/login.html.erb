@@ -1,4 +1,3 @@
-
 <!-- Login Content -->
 <div class="bg-white pulldown">
   <div class="content content-boxed overflow-hidden">
@@ -15,41 +14,41 @@
           <!-- Login Form -->
           <!-- jQuery Validation (.js-validation-login class is initialized in js/pages/base_pages_login.js) -->
           <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-          <form class="js-validation-login form-horizontal push-30-t" action="index.html" method="post">
-            <div class="form-group">
-              <div class="col-xs-12">
-                <div class="form-material form-material-primary floating">
-                  <input class="form-control" type="text" id="login-username" name="login-username">
-                  <label for="login-username">Email</label>
+          <%= form_tag({}, class: "js-validation-login form-horizontal push-30-t") do %>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <div class="form-material form-material-primary floating">
+                    <%= text_field_tag(:username_or_email, "", class: "form-control", id: "login-email", name: "login-email") %>
+                    <label for="login-email">Email</label>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="form-group">
-              <div class="col-xs-12">
-                <div class="form-material form-material-primary floating">
-                  <input class="form-control" type="password" id="login-password" name="login-password">
-                  <label for="login-password">Password</label>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <div class="form-material form-material-primary floating">
+                    <%= text_field_tag(:login_password, "", class: "form-control", id: "login-password", name: "login-password") %>
+                    <label for="login-password">Password</label>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="form-group">
-              <div class="col-xs-6">
-                <label class="css-input switch switch-sm switch-primary">
-                  <input type="checkbox" id="login-remember-me" name="login-remember-me"><span></span> Remember Me?
-                </label>
-              </div>
-              <div class="col-xs-6">
-                <div class="font-s13 text-right push-5-t">
-                  <a href="base_pages_reminder_v2.html">Forgot Password?</a>
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label class="css-input switch switch-sm switch-primary">
+                    <input type="checkbox" id="login-remember-me" name="login-remember-me"><span></span> Remember Me?
+                  </label>
+                </div>
+                <div class="col-xs-6">
+                  <div class="font-s13 text-right push-5-t">
+                    <a href="base_pages_reminder_v2.html">Forgot Password?</a>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="form-group push-30-t">
-              <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-                <a href="clients.html" class="btn btn-sm btn-block btn-primary" type="submit">Log in</a>
+              <div class="form-group push-30-t">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                  <button class="btn btn-sm btn-block btn-primary" type="submit">Log in</button>
+                </div>
               </div>
-            </div>
-          </form>
+          <% end %>
           <!-- END Login Form -->
         </div>
       </div>
