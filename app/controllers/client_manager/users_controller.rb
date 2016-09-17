@@ -26,7 +26,7 @@ module ClientManager
     private
 
     def user_params
-      params.require(:user).permit(:name, :email, :maximum_number_of_clients, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :maximum_number_of_clients, :password)
     end
   end
 end

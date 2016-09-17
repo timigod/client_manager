@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160822114148) do
+ActiveRecord::Schema.define(version: 20160905201553) do
 
   create_table "client_manager_clients", force: :cascade do |t|
     t.string   "name"
@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 20160822114148) do
     t.string   "name"
     t.string   "email"
     t.string   "encrypted_password"
-    t.string   "salt"
     t.integer  "maximum_number_of_clients"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "password_digest"
   end
 
 end

@@ -9,9 +9,9 @@ module ClientManager
 
 
     def login_attempt
-      authorized_user = User.authenticate(params[:email], params[:login_password])
+      authorized_user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
       if authorized_user
-        flash[:notice] = "Wow Welcome again, you logged in as #{authorized_user.username}"
+        flash[:notice] = "Wow Welcome again, you logged in as #{authorized_user.email}"
         redirect_to users_path
       else
         flash[:error] = "Invalid Username or Password"
