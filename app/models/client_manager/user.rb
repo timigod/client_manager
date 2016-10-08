@@ -24,7 +24,6 @@ module ClientManager
 
     def set_temporary_password
       self.password = SecureRandom.hex(6)
-      puts "being called"
     end
 
     def send_registration_email

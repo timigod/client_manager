@@ -3,6 +3,7 @@ require_dependency "client_manager/application_controller"
 
 module ClientManager
   class UsersController < ApplicationController
+    before_action :authenticate_superadmin
 
     def new
       @user = User.new

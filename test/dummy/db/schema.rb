@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905201553) do
+ActiveRecord::Schema.define(version: 20161007235114) do
 
   create_table "client_manager_clients", force: :cascade do |t|
     t.string   "name"
@@ -25,9 +25,11 @@ ActiveRecord::Schema.define(version: 20160905201553) do
     t.string   "email"
     t.string   "encrypted_password"
     t.integer  "maximum_number_of_clients"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.string   "password_digest"
+    t.boolean  "password_changed",          default: false
+    t.boolean  "superadmin",                default: false
   end
 
 end
