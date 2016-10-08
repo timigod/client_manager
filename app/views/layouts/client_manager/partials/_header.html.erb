@@ -1,6 +1,14 @@
 <header id="header-navbar" class="content-mini content-mini-full">
   <ul class="nav-header pull-right">
     <li>
+      <a href="<%= clients_path %>" class="btn btn-warning"><i
+      class="fa fa-server"></i></a>
+    </li>
+    <li>
+      <a href="<%= edit_user_path(current_user) %>" class="btn btn-primary" data-toggle="modal" data-target="#modal"><i
+      class="fa fa-user"></i></a>
+    </li>
+    <li>
       <a href="<%= path %>" class="btn btn-success" data-toggle="modal" data-target="#modal"><i
       class="fa fa-plus"></i></a>
     </li>
