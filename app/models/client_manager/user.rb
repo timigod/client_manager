@@ -6,7 +6,8 @@ module ClientManager
 
     default_scope { order('created_at DESC') }
     validates :name, :email, presence: true
-    validates :email, presence: true, uniqueness: true, email: true
+    validates :email, presence: true, uniqueness: true
+    validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
     before_validation :set_temporary_password, unless: :password_exists?
     before_create :send_registration_email
     has_many :clients
