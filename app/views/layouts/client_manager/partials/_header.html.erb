@@ -1,19 +1,27 @@
 <header id="header-navbar" class="content-mini content-mini-full">
   <ul class="nav-header pull-right">
     <li>
-      <a href="<%= clients_path %>" class="btn btn-warning"><i
-      class="fa fa-server"></i></a>
+      <a href="<%= path %>" class="btn btn-success" data-toggle="modal" data-target="#modal"><i
+      class="fa fa-plus"></i></a>
     </li>
+    <% if controller_name != "clients" %>
+        <li>
+          <a href="<%= clients_path %>" class="btn btn-default"><i
+          class="fa fa-server"></i></a>
+        </li>
+    <% end %>
+    <% if current_user.superadmin && controller_name != "users" %>
+        <li>
+          <a href="<%= users_path %>" class="btn btn-warning"><i
+          class="fa fa-users"></i></a>
+        </li>
+    <% end %>
     <li>
       <a href="<%= edit_user_path(current_user) %>" class="btn btn-primary" data-toggle="modal" data-target="#modal"><i
       class="fa fa-user"></i></a>
     </li>
     <li>
-      <a href="<%= path %>" class="btn btn-success" data-toggle="modal" data-target="#modal"><i
-      class="fa fa-plus"></i></a>
-    </li>
-    <li>
-      <a href="<%= logout_path %>" class="btn btn-default" type="button">
+      <a href="<%= logout_path %>" class="btn btn-danger" type="button" data-confirm="Are you sure you want to sign out?">
         <i class="fa fa-sign-out"></i>
       </a>
     </li>

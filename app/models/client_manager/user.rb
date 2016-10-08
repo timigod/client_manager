@@ -8,6 +8,7 @@ module ClientManager
     validates :name, :email, presence: true
     validates :email, presence: true, uniqueness: true
     validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+    validates_numericality_of :maximum_number_of_clients, allow_nil: true
     before_validation :set_temporary_password, unless: :password_exists?
     before_create :send_registration_email
     has_many :clients, dependent: :destroy
@@ -29,6 +30,10 @@ module ClientManager
 
     def send_registration_email
       RegistrationMailer.registration_email(self).deliver
+    end
+
+    def do_something
+
     end
 
 

@@ -6,7 +6,7 @@
             <button data-dismiss="modal" type="button"><i class="fa fa-close"></i></button>
           </li>
         </ul>
-        <h3 class="block-title">New User</h3>
+        <h3 class="block-title">Edit <%= @modal_title %></h3>
       </div>
       <div class="block-content">
         <div class="form-group">
@@ -18,17 +18,33 @@
         <div class="form-group">
           <%= user_form.label :email, class: "col-xs-12", required: true %>
           <div class="col-xs-12">
-            <%= user_form.text_field :email, class: "form-control", type: "email", required: true, disabled: @can_edit_email  %>
+            <%= user_form.text_field :email, class: "form-control", type: "email", required: true, disabled: @cannot_edit_email %>
           </div>
         </div>
-        <div class="form-group">
-          <%= user_form.label :maximum_number_of_clients, class: "col-xs-12", required: true %>
-          <div class="col-xs-12">
-            <%= user_form.text_field :maximum_number_of_clients, class: "form-control", type: "number", required: true %>
-          </div>
-        </div>
+        <% if current_user.superadmin %>
+            <div class="form-group">
+              <%= user_form.label :maximum_number_of_clients, class: "col-xs-12", required: true %>
+              <div class="col-xs-12">
+                <%= user_form.text_field :maximum_number_of_clients, class: "form-control", type: @input_type, value: @max_clients, required: true, disabled: @current_user_is_superadmin %>
+              </div>
+            </div>
+        <% end %>
+        <% if current_user == @user %>
+            <div class="form-group">
+              <%= user_form.label "New Password", class: "col-xs-12", required: true %>
+              <div class="col-xs-12">
+                <%= user_form.password_field :new_password, class: "form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= user_form.label "Confirm New Password", class: "col-xs-12", required: true %>
+              <div class="col-xs-12">
+                <%= user_form.password_field :new_password_confirmation, class: "form-control" %>
+              </div>
+            </div>
+        <% end %>
         <div class="modal-footer">
-          <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-check"></i> Save user</button>
+          <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-check"></i> <%= @button_text %></button>
           <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
         </div>
       </div>
