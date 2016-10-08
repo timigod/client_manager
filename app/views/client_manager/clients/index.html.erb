@@ -1,63 +1,36 @@
-<div id="page-container" class="header-navbar-fixed">
-
-  <header id="header-navbar" class="content-mini content-mini-full">
-    <ul class="nav-header pull-right">
-      <li>
-        <a href="new-client.html" class="btn btn-success" data-toggle="modal" data-target="#modal-new-client" aria-label="Add a New Client"><i
-        class="fa fa-plus"></i></a>
-      </li>
-      <li>
-        <a href="login.html" class="btn btn-default" aria-label="Sign Out">
-          <i class="fa fa-sign-out"></i>
-        </a>
-      </li>
-    </ul>
-  </header>
-
-  <main id="main-container">
-    <div class="content bg-gray-lighter">
-      <div class="row items-push">
-        <div class="col-sm-7">
-          <h1 class="page-heading">
-            Clients
-          </h1>
-        </div>
+<%= render 'layouts/client_manager/partials/header', path: "#" %>
+<main id="main-container">
+  <div class="content bg-gray-lighter">
+    <div class="row items-push">
+      <div class="col-sm-7">
+        <h1 class="page-heading">
+          Clients
+        </h1>
       </div>
     </div>
-    <div class="content">
-      <div class="content-grid push-50">
-        <div class="row">
+  </div>
+  <div class="content">
+    <div class="content-grid push-50">
+      <div class="row">
 
-          <!-- Use this for the loop -->
-          <div class="col-lg-4">
-            <div class="block block-link-hover3">
-              <div class="block-content block-content-full clearfix">
-                <button class="icon-btn" aria-label="Delete Client">
-                  <i class="fa fa-trash fa-2x text-danger text-muted"></i>
-                </button>
-                <button class="icon-btn" data-toggle="modal" data-target="#modal-view-client" aria-label="View Details">
-                  <i class="fa fa-eye fa-2x text-primary text-muted"></i>
-                </button>
-                <h2 class="h4 font-w700">Angular (User Facing)</h2>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="block block-link-hover3" href="javascript:void(0)">
-              <div class="block-content block-content-full clearfix">
-                <a href="#"><i class="fa fa-trash fa-2x text-danger text-muted pull-right"></i></a>
-                <a href="#" data-toggle="modal" data-target="#modal-view-client"><i
-                class="fa fa-eye fa-2x text-primary text-muted pull-right"></i></a>
-
-                <h2 class="h4 font-w700">Angular (Admin Dashboard)</h2>
-              </div>
+        <!-- Use this for the loop -->
+        <div class="col-lg-4">
+          <div class="block block-link-hover3">
+            <div class="block-content block-content-full clearfix">
+              <button class="icon-btn" aria-label="Delete Client">
+                <i class="fa fa-trash fa-2x text-danger text-muted"></i>
+              </button>
+              <button class="icon-btn" data-toggle="modal" data-target="#modal-view-client" aria-label="View Details">
+                <i class="fa fa-eye fa-2x text-primary text-muted"></i>
+              </button>
+              <h2 class="h4 font-w700">Angular (User Facing)</h2>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </main>
+  </div>
+</main>
 </div>
 
 
@@ -126,4 +99,4 @@
       </div>
     </form>
   </div>
-</div>s
+</div>

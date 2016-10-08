@@ -1,81 +1,51 @@
-<div id="page-container" class="header-navbar-fixed">
-  <header id="header-navbar" class="content-mini content-mini-full">
-    <ul class="nav-header pull-right">
-      <li>
-        <a href="<%= new_user_path %>" class="btn btn-success" data-toggle="modal" data-target="#modal-new-user"><i
-        class="fa fa-plus"></i></a>
-      </li>
-      <li>
-        <a href="login.html" class="btn btn-default" type="button">
-          <i class="fa fa-sign-out"></i>
-        </a>
-      </li>
-    </ul>
-  </header>
-
-  <main id="main-container">
-    <div class="content bg-gray-lighter">
-      <div class="row items-push">
-        <div class="col-sm-7">
-          <h1 class="page-heading">
-            Users
-          </h1>
-        </div>
+<%= render 'layouts/client_manager/partials/header', path: new_user_path %>
+<main id="main-container">
+  <div class="content bg-gray-lighter">
+    <div class="row items-push">
+      <div class="col-sm-7">
+        <h1 class="page-heading">
+          Users
+        </h1>
       </div>
-    </div>
-    <div class="content">
-      <div class="block">
-
-        <div class="block-content">
-          <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
-          <table class="table table-bordered table-striped js-dataTable-full">
-            <thead>
-            <tr>
-              <th>Name</th>
-              <th class="hidden-xs">Email</th>
-              <th class="hidden-xs">Max Clients</th>
-              <th class="hidden-xs">Clients</th>
-              <th class="text-center" style="width: 10%;">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <% @users.each do |user| %>
-                <tr>
-                  <td class="font-w600"><%= user.name %></td>
-                  <td class="hidden-xs"><%= user.email %></td>
-                  <td class="hidden-xs"><%= user.maximum_number_of_clients %> </td>
-                  <td class="hidden-xs"><%= user.client_count %> </td>
-                  <td class="text-center">
-                    <div class="btn-group">
-                      <a href="#" data-toggle="modal" data-target="#modal-new-user"><i
-                      class="fa fa-pencil"></i></a>
-                      <a href="#"><i class="fa fa-times text-danger"></i></a>
-                    </div>
-                  </td>
-                </tr>
-            <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </main>
-</div>
-
-
-<div class="modal fade" id="modal-new-user" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-popout">
-    <div class="modal-content">
-
     </div>
   </div>
-</div>
+  <div class="content">
+    <div class="block">
+
+      <div class="block-content">
+        <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
+        <table class="table table-bordered table-striped js-dataTable-full">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th class="hidden-xs">Email</th>
+            <th class="hidden-xs">Max Clients</th>
+            <th class="hidden-xs">Clients</th>
+            <th class="text-center" style="width: 10%;">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @users.each do |user| %>
+              <tr>
+                <td class="font-w600"><%= user.name %></td>
+                <td class="hidden-xs"><%= user.email %></td>
+                <td class="hidden-xs"><%= user.maximum_number_of_clients %> </td>
+                <td class="hidden-xs"><%= user.client_count %> </td>
+                <td class="text-center">
+                  <div class="btn-group">
+                    <a href="" data-toggle="modal" data-target="#modal"><i
+                    class="fa fa-pencil"></i></a>
+                    <a href="#"><i class="fa fa-times text-danger"></i></a>
+                  </div>
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
 
 
-<script>
-  $(function () {
-    $('#modal-new-user').on('hidden.bs.modal', function () {
-      $(this).removeData('bs.modal');
-    });
-  });
-</script>
+<%= render 'layouts/client_manager/partials/modal' %>
