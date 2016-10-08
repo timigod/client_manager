@@ -10,7 +10,7 @@ module ClientManager
     validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
     before_validation :set_temporary_password, unless: :password_exists?
     before_create :send_registration_email
-    has_many :clients
+    has_many :clients, dependent: :destroy
 
     def client_count
       clients.count

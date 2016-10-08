@@ -6,5 +6,5 @@ ClientManager::Engine.routes.draw do
   get 'change_password', to: 'passwords#change'
   post 'change_password_attempt', to: 'passwords#change_password_attempt'
   get 'clients', to: 'clients#index'
-  resources :users, only: [:index, :new, :create, :edit, :destroy]
+  resources :users
 end
