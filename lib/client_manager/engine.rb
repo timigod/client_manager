@@ -7,4 +7,14 @@ module ClientManager
 
     isolate_namespace ClientManager
   end
+
+  class << self
+    mattr_accessor :token_secret
+    self.token_secret = nil
+  end
+
+  def self.setup(&block)
+    yield self
+  end
+
 end
