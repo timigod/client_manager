@@ -32,10 +32,5 @@ module ClientManager
       RegistrationMailer.registration_email(self).deliver
     end
 
-    def do_something
-
-    end
-
-
   end
 end

@@ -4,6 +4,7 @@ module ClientManager
     require 'growlyflash'
     require 'font-awesome-rails'
     require 'bcrypt'
+    require 'jwt'
 
     isolate_namespace ClientManager
   end

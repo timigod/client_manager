@@ -1,3 +1,3 @@
 ClientManager.setup do |config|
-  config.token_secret = "PLEASE-SET-TOKEN"
+  config.token_secret = nil # PLEASE SET SECRET AND USE ENVIRONMENT VARIABLES FOR PRODUCTION
 end

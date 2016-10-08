@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency "font-awesome-rails"
   s.add_dependency "jquery-rails"
   s.add_dependency "bcrypt"
+  s.add_dependency "jwt"
 
   s.add_development_dependency "sqlite3"
 end

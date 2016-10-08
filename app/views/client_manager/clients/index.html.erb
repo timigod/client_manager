@@ -1,4 +1,4 @@
-<%= render 'layouts/client_manager/partials/header', path: new_clients_path %>
+<%= render 'layouts/client_manager/partials/header', path: new_client_path %>
 <main id="main-container">
   <div class="content bg-gray-lighter">
     <div class="row items-push">
@@ -13,20 +13,21 @@
     <div class="content-grid push-50">
       <div class="row">
 
-        <!-- Use this for the loop -->
-        <div class="col-lg-4">
-          <div class="block block-link-hover3">
-            <div class="block-content block-content-full clearfix">
-              <button class="icon-btn" aria-label="Delete Client">
-                <i class="fa fa-trash fa-2x text-danger text-muted"></i>
-              </button>
-              <button class="icon-btn" data-toggle="modal" data-target="#modal-view-client" aria-label="View Details">
-                <i class="fa fa-eye fa-2x text-primary text-muted"></i>
-              </button>
-              <h2 class="h4 font-w700">Angular (User Facing)</h2>
+        <% @clients.each do |client| %>
+            <div class="col-lg-4">
+              <div class="block block-link-hover3">
+                <div class="block-content block-content-full clearfix">
+                  <button class="icon-btn" aria-label="Delete Client">
+                    <i class="fa fa-trash fa-2x text-danger text-muted"></i>
+                  </button>
+                  <button class="icon-btn" data-toggle="modal" data-target="#modal-view-client" aria-label="View Details">
+                    <i class="fa fa-eye fa-2x text-primary text-muted"></i>
+                  </button>
+                  <h2 class="h4 font-w700"><%= client.name %></h2>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -57,7 +58,7 @@
             </div>
             <div class="modal-footer">
               <a href="#" class="btn btn-sm btn-primary" type="button"><i
-              class="fa fa-check"></i>
+              class="fa fa-refresh"></i>
                 Refresh Token</a>
               <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
             </div>

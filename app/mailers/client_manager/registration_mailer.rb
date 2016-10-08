@@ -1,5 +1,5 @@
 module ClientManager
-  class RegistrationMailer < ::ApplicationMailer
+  class RegistrationMailer < ApplicationMailer
 
 
     def registration_email(user)

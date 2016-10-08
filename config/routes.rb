@@ -5,6 +5,6 @@ ClientManager::Engine.routes.draw do
   post 'login_attempt', to: 'sessions#login_attempt'
   get 'change_password', to: 'passwords#change'
   post 'change_password_attempt', to: 'passwords#change_password_attempt'
-  get 'clients', to: 'clients#index'
+  resources :clients
   resources :users
 end
