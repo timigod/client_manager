@@ -6,10 +6,9 @@
   </div>
 </div>
 
-
 <script>
   $(function () {
-    $('#modal').on('hidden.bs.modal', function () {
+    $('.modal').on('hidden.bs.modal', function () {
       $(this).removeData('bs.modal');
     });
   });
