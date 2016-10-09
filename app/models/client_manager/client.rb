@@ -24,7 +24,7 @@ module ClientManager
     end
 
     def number_of_users_clients
-      if user.clients.count > user.maximum_number_of_clients
+      if !self.user.superadmin && self.user.maximum_number_of_clients <= self.user.clients.count
         self.errors[:base] << "Maximum number of clients reached. You cannot create more than #{user.maximum_number_of_clients} clients."
       end
     end

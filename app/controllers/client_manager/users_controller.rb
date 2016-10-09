@@ -80,7 +80,7 @@ module ClientManager
     end
 
     def max_clients_is_too_low?
-      if !(params[:user][:maximum_number_of_clients].blank?) && (params[:user][:maximum_number_of_clients].to_i >= @user.clients.count)
+      if !(params[:user][:maximum_number_of_clients].blank?) && (params[:user][:maximum_number_of_clients].to_i <= @user.clients.count)
         flash[:error] = "User already has #{@user.clients.count} clients. Max. number of clients cannot be lower."
         redirect_to session.delete(:return_to)
         return true
@@ -102,7 +102,7 @@ module ClientManager
 
     def password_change_attempted?
       @new_password = params[:user][:new_password]; @new_password_confirmation = params[:user][:new_password_confirmation]
-      return !(@new_password.blank? || @new_password_confirmation.blank?) && current_user == @user
+      return (!@new_password.blank? || !@new_password_confirmation.blank?) && current_user == @user
     end
 
     def set_user
