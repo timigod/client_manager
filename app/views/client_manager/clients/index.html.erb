@@ -20,7 +20,7 @@
                   <button class="icon-btn" aria-label="Delete Client">
                     <i class="fa fa-trash fa-2x text-danger text-muted"></i>
                   </button>
-                  <button class="icon-btn" data-toggle="modal" data-target="#modal-view-client" aria-label="View Details">
+                  <button class="icon-btn" data-toggle="modal" data-target="#modal" href="<%= client_path(client) %>" aria-label="View Details">
                     <i class="fa fa-eye fa-2x text-primary text-muted"></i>
                   </button>
                   <h2 class="h4 font-w700"><%= client.name %></h2>
@@ -32,72 +32,4 @@
     </div>
   </div>
 </main>
-</div>
-
-
-<div class="modal fade" id="modal-view-client" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-popout">
-    <form class="form-horizontal push-5-t" method="post" onsubmit="return false;">
-      <div class="modal-content">
-        <div class="block block-themed block-transparent remove-margin-b">
-          <div class="block-header bg-primary-dark">
-            <ul class="block-options">
-              <li>
-                <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
-              </li>
-            </ul>
-            <h3 class="block-title">Angular (User Facing)</h3>
-          </div>
-          <div class="block-content">
-            <div class="form-group">
-              <label class="col-xs-12">Token</label>
-              <div class="col-xs-12">
-                <input class="form-control" type="text" value="WFWEe3290ff32ud21rfinckack"
-                       disabled="true">
-              </div>
-            </div>
-            <div class="modal-footer">
-              <a href="#" class="btn btn-sm btn-primary" type="button"><i
-              class="fa fa-refresh"></i>
-                Refresh Token</a>
-              <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-
-<div class="modal fade" id="modal-new-client" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-popout">
-    <form class="form-horizontal push-5-t" method="post" onsubmit="return false;">
-      <div class="modal-content">
-        <div class="block block-themed block-transparent remove-margin-b">
-          <div class="block-header bg-primary-dark">
-            <ul class="block-options">
-              <li>
-                <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
-              </li>
-            </ul>
-            <h3 class="block-title">New Client</h3>
-          </div>
-          <div class="block-content">
-            <div class="form-group">
-              <label class="col-xs-12">Client Name</label>
-              <div class="col-xs-12">
-                <input class="form-control" type="text" placeholder="iOS">
-              </div>
-            </div>
-            <div class="modal-footer">
-              <a href="#" class="btn btn-sm btn-primary" type="button"><i
-              class="fa fa-check"></i>
-                Save</a>
-              <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
 </div>

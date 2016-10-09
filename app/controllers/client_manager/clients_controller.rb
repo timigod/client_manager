@@ -1,6 +1,7 @@
 module ClientManager
   class ClientsController < ApplicationController
     before_action :authenticate_user
+    before_action :set_client, only: [:edit, :show, :update, :destroy]
 
     def index
       @clients = Client.where(user_id: current_user.id)
@@ -8,6 +9,10 @@ module ClientManager
 
     def new
       @client = current_user.clients.new
+    end
+
+    def show
+
     end
 
     def create
@@ -22,6 +27,11 @@ module ClientManager
 
 
     private
+
+
+    def set_client
+      @client = Client.find(params[:id])
+    end
 
     def client_params
       params.require(:client).permit(:name)
