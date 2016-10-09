@@ -2,6 +2,7 @@ module ClientManager
   class ClientsController < ApplicationController
     before_action :authenticate_user
     before_action :set_client, only: [:edit, :show, :update, :destroy]
+    layout "client_manager/none", only: [:new, :show]
 
     def index
       @clients = Client.where(user_id: current_user.id)

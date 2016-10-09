@@ -7,6 +7,7 @@ module ClientManager
     before_action :authenticate_superadmin, except: [:edit, :update]
     before_action :authenticate_editor, only: [:edit, :update]
     before_action :set_edit_view_variables, only: [:edit]
+    layout "client_manager/none", only: [:new, :edit]
 
     def new
       @user = User.new
@@ -47,7 +48,7 @@ module ClientManager
     def destroy
       @user.destroy
       flash[:success] = "User successfully deleted"
-      redirect_to session.delete(:return_to)
+      redirect_to users_path
     end
 
 
