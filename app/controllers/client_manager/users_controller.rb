@@ -27,7 +27,7 @@ module ClientManager
       if @user.save
         flash[:success] = "User successfully updated"
       else
-        flash[:error] = @user.errors.empty? ? "Error" : @user.errors.full_messages.to_sentence
+        flash[:error] = @user.errors.empty? ? "Error" : @user.errors.full_messages.uniq.to_sentence
       end
 
       redirect_to users_path
@@ -38,7 +38,7 @@ module ClientManager
       if @user.save
         flash[:success] = "User successfully created"
       else
-        flash[:error] = @user.errors.empty? ? "Error" : @user.errors.full_messages.to_sentence
+        flash[:error] = @user.errors.empty? ? "Error" : @user.errors.full_messages.uniq.to_sentence
       end
       redirect_to users_path
     end

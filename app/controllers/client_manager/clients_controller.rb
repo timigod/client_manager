@@ -15,7 +15,7 @@ module ClientManager
       if @client.save
         flash[:success] = "Client successfully created"
       else
-        flash[:error] = @client.errors.empty? ? "Error" : @client.errors.full_messages.to_sentence
+        flash[:error] = @client.errors.empty? ? "Error" : @client.errors.full_messages.uniq.to_sentence
       end
       redirect_to clients_path
     end

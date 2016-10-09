@@ -3,6 +3,7 @@ module ClientManager
     belongs_to :user
     before_validation :generate_token, unless: :token_exists?
     validates_presence_of :name, :token, :user_id
+    validate :number_of_users_clients
 
 
     def token_exists?
@@ -21,6 +22,11 @@ module ClientManager
       self.update(token: token)
     end
 
+    def number_of_users_clients
+      if user.clients.count >= user.maximum_number_of_clients
+        self.errors[:base] << "Maximum number of clients reached. You cannot create more than #{user.maximum_number_of_clients} clients."
+      end
+    end
 
   end
 end

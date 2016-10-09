@@ -9,6 +9,7 @@ module ClientManager
     validates :email, presence: true, uniqueness: true
     validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
     validates_numericality_of :maximum_number_of_clients, allow_nil: true
+
     before_validation :set_temporary_password, unless: :password_exists?
     before_create :send_registration_email
     has_many :clients, dependent: :destroy
@@ -18,7 +19,6 @@ module ClientManager
     end
 
     private
-
 
     def password_exists?
       !self.password_digest.blank?
