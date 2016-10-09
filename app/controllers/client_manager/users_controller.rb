@@ -21,7 +21,7 @@ module ClientManager
     end
 
     def update
-      @user.assign_attributes(user_params)
+      @user.assign_attributes(user_update_params)
       return if password_change_attempted? && !handle_password_update
       return if max_clients_is_too_low?
       if @user.save
@@ -30,7 +30,7 @@ module ClientManager
         flash[:error] = @user.errors.empty? ? "Error" : @user.errors.full_messages.uniq.to_sentence
       end
 
-      redirect_to users_path
+      redirect_to session.delete(:return_to)
     end
 
     def create
@@ -47,7 +47,7 @@ module ClientManager
     def destroy
       @user.destroy
       flash[:success] = "User successfully deleted"
-      redirect_to users_path
+      redirect_to session.delete(:return_to)
     end
 
 
@@ -62,7 +62,6 @@ module ClientManager
 
     def set_edit_view_variables
       @modal_title = "MY PROFILE" if current_user == @user
-      @cannot_edit_email = @user.password_changed && !(@user == current_user)
       @current_user_is_superadmin = @user.superadmin && @user == current_user
 
       if @current_user_is_superadmin
@@ -81,7 +80,7 @@ module ClientManager
     end
 
     def max_clients_is_too_low?
-      if params[:user][:maximum_number_of_clients].to_i < @user.clients.count
+      if !(params[:user][:maximum_number_of_clients].blank?) && (params[:user][:maximum_number_of_clients].to_i >= @user.clients.count)
         flash[:error] = "User already has #{@user.clients.count} clients. Max. number of clients cannot be lower."
         redirect_to session.delete(:return_to)
         return true
@@ -103,7 +102,7 @@ module ClientManager
 
     def password_change_attempted?
       @new_password = params[:user][:new_password]; @new_password_confirmation = params[:user][:new_password_confirmation]
-      return (@new_password || @new_password_confirmation) && current_user == @user
+      return !(@new_password.blank? || @new_password_confirmation.blank?) && current_user == @user
     end
 
     def set_user
@@ -112,6 +111,10 @@ module ClientManager
 
     def user_params
       params.require(:user).permit(:name, :email, :maximum_number_of_clients)
+    end
+
+    def user_update_params
+      params.require(:user).permit(:name, :maximum_number_of_clients)
     end
   end
 end
