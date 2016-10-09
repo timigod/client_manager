@@ -17,12 +17,12 @@
             <div class="col-lg-4">
               <div class="block block-link-hover3">
                 <div class="block-content block-content-full clearfix">
-                  <button class="icon-btn" aria-label="Delete Client">
+                  <a href="<%= client_path(client) %>" data-method="delete" data-confirm="Are you sure you want to delete this client?" class="icon-btn" aria-label="Delete Client">
                     <i class="fa fa-trash fa-2x text-danger text-muted"></i>
-                  </button>
-                  <button class="icon-btn" data-toggle="modal" data-target="#modal" href="<%= client_path(client) %>" aria-label="View Details">
+                  </a>
+                  <a class="icon-btn" data-toggle="modal" data-target="#modal" href="<%= client_path(client) %>" aria-label="View Details">
                     <i class="fa fa-eye fa-2x text-primary text-muted"></i>
-                  </button>
+                  </a>
                   <h2 class="h4 font-w700"><%= client.name %></h2>
                 </div>
               </div>

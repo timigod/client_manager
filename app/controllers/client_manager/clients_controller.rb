@@ -25,6 +25,11 @@ module ClientManager
       redirect_to clients_path
     end
 
+    def destroy
+      @client.destroy
+      redirect_to clients_path
+    end
+
 
     private
 

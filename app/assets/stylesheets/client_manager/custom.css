@@ -1,9 +1,9 @@
 
-.block-link-hover3 button.icon-btn {
+.block-link-hover3 a.icon-btn {
     float: right;
 }
 
-button.icon-btn {
+a.icon-btn {
     display: inline;
     -webkit-appearance: none;
     border: 0;
@@ -11,12 +11,13 @@ button.icon-btn {
     margin: 0;
 }
 
-button.icon-btn .fa {
+a.icon-btn .fa {
     opacity: 0.7;
     transition: transform 0.5s;
 }
-button.icon-btn:hover .fa,
-button.icon-btn:focus .fa{
+
+a.icon-btn:hover .fa,
+a.icon-btn:focus .fa {
     opacity: 1;
     transform: scale(1.2);
 }
