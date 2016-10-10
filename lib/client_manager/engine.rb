@@ -7,6 +7,17 @@ module ClientManager
     require 'jwt'
 
     isolate_namespace ClientManager
+
+
+    initializer "client_manager", before: :load_config_initializers do |app|
+      Rails.application.routes.append do
+        mount ClientManager::Engine, at: "/client_manager"
+      end
+
+      config.paths["db/migrate"].expanded.each do |expanded_path|
+        Rails.application.config.paths["db/migrate"] << expanded_path
+      end
+    end
   end
 
   class << self

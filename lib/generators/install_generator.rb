@@ -1,0 +1,17 @@
+module ClientManager
+  class InstallGenerator < Rails::Generators::Base
+    include Rails::Generators::Migration
+
+
+    def self.source_root
+      @source_root ||= File.join(File.dirname(__FILE__), 'templates')
+    end
+
+
+    def create_initializer_file
+      copy_file 'client_manager.rb', 'config/initializers/client_manager.rb'
+    end
+
+
+  end
+end
