@@ -9,7 +9,7 @@ module ClientManager
 
     def change_password_attempt
       if params[:new_password] == params[:confirm_new_password]
-        current_user.update(password: params[:new_password], password_changed: true)
+        client_manager_current_user.update(password: params[:new_password], password_changed: true)
         flash[:notice] = "Successfully changed password"
         redirect_to login_path
       else

@@ -5,11 +5,11 @@ module ClientManager
     layout "client_manager/none", only: [:new, :show]
 
     def index
-      @clients = Client.where(user_id: current_user.id)
+      @clients = Client.where(user_id: client_manager_current_user.id)
     end
 
     def new
-      @client = current_user.clients.new
+      @client = client_manager_current_user.clients.new
     end
 
     def show
@@ -17,7 +17,7 @@ module ClientManager
     end
 
     def create
-      @client = current_user.clients.new(client_params)
+      @client = client_manager_current_user.clients.new(client_params)
       if @client.save
         flash[:success] = "Client successfully created"
       else

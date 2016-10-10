@@ -14,7 +14,7 @@ module ClientManager
     end
 
     def index
-      @users = User.where.not(id: current_user.id, superadmin: true)
+      @users = User.where.not(id: client_manager_current_user.id, superadmin: true)
     end
 
     def edit
@@ -56,16 +56,16 @@ module ClientManager
 
 
     def authenticate_editor
-      if !(current_user == @user)
+      if !(client_manager_current_user == @user)
         authenticate_superadmin
       end
     end
 
     def set_edit_view_variables
-      @modal_title = "MY PROFILE" if current_user == @user
-      @current_user_is_superadmin = @user.superadmin && @user == current_user
+      @modal_title = "MY PROFILE" if client_manager_current_user == @user
+      @client_manager_current_user_is_superadmin = @user.superadmin && @user == client_manager_current_user
 
-      if @current_user_is_superadmin
+      if @client_manager_current_user_is_superadmin
         @max_clients = "Infinity"
         @input_type = "text"
       else
@@ -73,7 +73,7 @@ module ClientManager
         @input_type = "number"
       end
 
-      if current_user == @user
+      if client_manager_current_user == @user
         @button_text = "Save Profile"
       else
         @button_text = "Save User"
@@ -103,7 +103,7 @@ module ClientManager
 
     def password_change_attempted?
       @new_password = params[:user][:new_password]; @new_password_confirmation = params[:user][:new_password_confirmation]
-      return (!@new_password.blank? || !@new_password_confirmation.blank?) && current_user == @user
+      return (!@new_password.blank? || !@new_password_confirmation.blank?) && client_manager_current_user == @user
     end
 
     def set_user

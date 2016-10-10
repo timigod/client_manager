@@ -15,7 +15,7 @@
           </a>
         </li>
     <% end %>
-    <% if current_user.superadmin && controller_name != "users" %>
+    <% if client_manager_current_user.superadmin && controller_name != "users" %>
         <li>
           <a href="<%= users_path %>" class="btn btn-warning">
             <span class="sr-only">Users</span>
@@ -24,7 +24,7 @@
         </li>
     <% end %>
     <li>
-      <a href="<%= edit_user_path(current_user) %>" class="btn btn-primary" data-toggle="modal" data-target="#modal">
+      <a href="<%= edit_user_path(client_manager_current_user) %>" class="btn btn-primary" data-toggle="modal" data-target="#modal">
         <span class="sr-only">Your Profile</span>
         <i class="fa fa-user" aria-hidden="true"></i>
       </a>

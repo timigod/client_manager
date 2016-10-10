@@ -4,11 +4,11 @@ module ClientManager
   class SessionsController < ApplicationController
 
     def login
-      redirect_to after_login_path if current_user
+      redirect_to after_login_path if client_manager_current_user
     end
 
     def logout
-      session.delete(:current_user_id)
+      session.delete(:client_manager_current_user_id)
       redirect_to login_path
     end
 
@@ -19,7 +19,7 @@ module ClientManager
         flash[:error] = "Invalid Username or Password"
         redirect_to login_path
       else
-        session[:current_user_id] = authorized_user.id
+        session[:client_manager_current_user_id] = authorized_user.id
         redirect_to after_login_path
       end
 
@@ -27,7 +27,7 @@ module ClientManager
 
 
     def after_login_path
-      if current_user.superadmin
+      if client_manager_current_user.superadmin
         return users_path
       else
         return clients_path

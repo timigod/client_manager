@@ -3,16 +3,16 @@ module ClientManager
     use_growlyflash
     protect_from_forgery with: :exception
 
-    def current_user
-      @current_user ||= session[:current_user_id] && User.find_by_id(session[:current_user_id])
+    def client_manager_current_user
+      @client_manager_current_user ||= session[:client_manager_current_user_id] && User.find_by_id(session[:client_manager_current_user_id])
     end
 
 
     def authenticate_user
-      if !current_user
+      if !client_manager_current_user
         flash[:error] = "Unauthorized"
         redirect_to login_path
-      elsif !current_user.password_changed
+      elsif !client_manager_current_user.password_changed
         flash[:error] = "You must change your password before proceeding"
         redirect_to change_password_path
       end
@@ -20,12 +20,12 @@ module ClientManager
 
     def authenticate_superadmin
       authenticate_user
-      if !current_user.superadmin
+      if !client_manager_current_user.superadmin
         flash[:error] = "Unauthorized"
         redirect_to login_path
       end
     end
 
-    helper_method :current_user
+    helper_method :client_manager_current_user
   end
 end
