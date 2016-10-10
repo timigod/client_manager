@@ -17,6 +17,8 @@ Users you create will get an email with their password and are required to chang
 
 **Note:** Client Manager inherits from your application's `ActionMailer` settings. If you've not set up your application to send emails, client manager emails won't be sent.
 
+## Authenticating Requests
+Client applications need to add their generated tokens to the `Header` of every request like so: `client_token: <generated-token>`. You can access the client making the request within your controllers using the `current_client` helper method.
 
 ## Contributing & Todo
 To contribute: fork this repo, write code & make pull request.
