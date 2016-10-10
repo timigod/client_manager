@@ -15,7 +15,7 @@ module ClientManager
 
     def include_controller_concerns
       fname = "app/controllers/application_controller.rb"
-      line = "include ClientManager::Concerns::AuthenticateRequest"
+      line = "include ClientManager::Concerns::SetClientByToken"
 
       if File.exist?(File.join(destination_root, fname))
         if parse_file_for_line(fname, line)
@@ -23,18 +23,18 @@ module ClientManager
         elsif is_rails_api?
           inject_into_file fname, after: "class ApplicationController < ActionController::API\n" do
             <<-'RUBY'
-  include ClientManager::Concerns::AuthenticateRequest
+  include ClientManager::Concerns::SetClientByToken
             RUBY
           end
         else
           inject_into_file fname, after: "class ApplicationController < ActionController::Base\n" do
             <<-'RUBY'
-  include ClientManager::Concerns::AuthenticateRequest
+  include ClientManager::Concerns::SetClientByToken
             RUBY
           end
         end
       else
-        say_status("skipped", "app/controllers/application_controller.rb not found. Add 'include ClientManager::Concerns::AuthenticateRequest' to any controllers that require authentication.")
+        say_status("skipped", "app/controllers/application_controller.rb not found. Add 'include ClientManager::Concerns::SetClientByToken' to any controllers that require authentication.")
       end
     end
 
