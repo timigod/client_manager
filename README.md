@@ -47,7 +47,7 @@ rake db:migrate
 
 #### 3. Install Client Manager
 
-Run the following commant in your terminal:
+Run the following command in your terminal:
 
 ```
 rails generate client_manager:install
@@ -71,6 +71,9 @@ rake client_manager:superadmin NAME=Timi EMAIL=timi@example.com PASSWORD=lol
 ```
 
 All three arguments are required.
+
+
+#### 5. Start your server
 
 
 ## Usage
