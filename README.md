@@ -5,33 +5,65 @@ API Client Manager is a mountable Rails (engine) gem that helps identify and aut
 
 ## Motivation
 
-To understand why this gem exists, let's look at a simple example of a Blog application built with a Rails API and any JavaScript front-end framework. 
+To understand why this gem exists, let's look at a simple example of a blog application built with a Rails API and any JavaScript front-end framework. In the API, you're probably going to have some endpoints that only logged in Users/Authors can access. Like creating or deleting a blog post. Other endpoints, however, like reading posts, will be unauthenticated. This means that if one should go to the read endpoint using a browser, the whole JSON response will be displayed. What would be ideal, would be make it such that only the front-end application can access the read endpoint(s). 
 
-In the API, you're probably going to have some endpoints that only logged in Users/Authors can access. Like creating or deleting a blog post. Other endpoints however, like reading posts, would be unauthenticated. This means that if one should go to the read endpoint with the browser, the whole JSON response would be displayed. What would be ideal, would be make it such that only the FE app can access the read endpoint(s). To do that, you might generate a random UUID and ask the FE developer to put it in the header of whatever request. But this can't "scale", what if you want to add an Android app? Or an iOS one too? That's what Client Manager does for you; helps manage all of this with a simple UI.
+Typically, to do this, you might generate a random UUID and ask the front-end developer to put it in the header of their requests. But this doesn't "scale" well. What if you want to add an Android app? Or an iOS one too? That's where Client Manager comes in. It helps you easily manage all of this with a simple User Interface. With Client Manager, you can:
+
+- Create clients with an automatically generated JSON Web Token which can be used to authenticate requests
+- Create users with the ability to create (a specified number of) clients themselves
+
+
 
 ## Installation & Setup
+
 1. Add `gem 'client_manager'` to your application's Gemfile, then `bundle install`.
-2. Run `rails generate client_manager:install`. This creates a `client_manager.rb` file in your app's initializer's folder & inserts `include ClientManager::Concerns::SetClientByToken` into    your `ApplicationController`, to authenticate all requests. You can remove it from that controller and put it in any controller that needs client authentication.
-3. Finally, you need to create a `superadmin` using `rake client_manager:superadmin NAME=Test EMAIL=test@test.com PASSWORD=password`. Remember to change the NAME, EMAIL and PASSWORD arguments. All three arguments are required.
+1. Run `rake db:migrate` to migrate the database.
+1. Run `rails generate client_manager:install`. This creates a `client_manager.rb` file in your app's initializer's folder & inserts `include ClientManager::Concerns::SetClientByToken` into    your `ApplicationController`, to authenticate all requests. You can remove it from that controller and put it in any controller that needs client authentication.
+1. Finally, you need to create a `superadmin` using `rake client_manager:superadmin NAME=Test EMAIL=test@test.com PASSWORD=password`. Remember to change the NAME, EMAIL and PASSWORD arguments. All three arguments are required.
 
 ## Usage
-Client Manager is automatically hosted at `/client_manager`. There you can sign in with your superadmin credentials.
 
-Once, signed in, you can create Client Manager Users and specify the maximum number of clients they're allowed to create. 
+The Client Manager is automatically hosted at `/client_manager`. There, you can sign in with your superadmin credentials.
 
-Users you create will get an email with their password and are required to change this on first sign in.
+### Creating Users
+
+Once, signed in, you can create Client Manager Users and specify the maximum number of clients they are allowed to create. Users you create will get an email with their password and are required to change this on first sign in.
+
+![Creating a User](http://res.cloudinary.com/duswj2lve/image/upload/v1476136538/client-manager-new-user_dqoyrk.png)
 
 **Note:** Client Manager inherits from your application's `ActionMailer` settings. If you've not set up your application to send emails, client manager emails won't be sent.
 
-## Authenticating Requests
-Client applications need to add their generated tokens to the `Header` of every request like so: `client_token: <generated-token>`. You can access the client making the request within your controllers using the `current_client` helper method.
+
+### Creating Clients
+
+You can create clients yourself, or let your users create clients. To create a Client, click the server icon in the navigation to go to the Clients page. Then, click the plus sign to create a new client.
+
+![Creating a Client](http://res.cloudinary.com/duswj2lve/image/upload/v1476136539/client-manager-new-client_vh9qcb.png)
+
+
+
+### Authenticating Requests
+
+Client applications need to add their generated tokens to the `Header` of every request. For example -
+
+```javascript
+const myHeaders = new Headers();
+myHeaders.append('client_token', GENERATED_TOKEN_HERE);
+```
+
+You can access the client making the request within your controllers using the `current_client` helper method.
+
+
 
 ## Contributing & Todo
+
 To contribute: fork this repo, write code & make pull request.
 Some of the things I'm looking at doing in the immediate future are:
 - Tests
 - Basic stats: Requests per client over time
 - Rate limiting client request
 
+
 ## License
+
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
