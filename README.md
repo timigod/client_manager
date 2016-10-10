@@ -1,4 +1,4 @@
-# Motivation
+## Motivation
 To understand why this gem exists, we're going to look at a simple example of a Blog application built with a Rails API and any JavaScript front-end framework. 
 
 In the API, you're probably going to have some endpoints that only logged in Users/Authors can access. Like creating or deleting a blog post. Other endpoints however, like reading posts, would be unauthenticated. This means that if one should go to the read endpoint with the browser, the whole JSON response would be displayed. What would be ideal, would be make it such that only the FE app can access the read endpoint(s). To do that, you might generate a random UUID and ask the FE developer to put it in the header of whatever request. But this can't "scale", what if you want to add an Android app? Or an iOS one too? That's what Client Manager does for you; helps manage all of this with a simple UI.
