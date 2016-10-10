@@ -1,5 +1,7 @@
 # API Client Manager
 
+[![Gem](https://img.shields.io/gem/v/formatador.svg?maxAge=2592000)](https://rubygems.org/gems/client_manager)
+
 API Client Manager is a mountable Rails (engine) gem that helps identify and authenticate your API clients.
 
 
@@ -13,6 +15,9 @@ Typically, to do this, you might generate a random UUID and ask the front-end de
 - Create users with the ability to create (a specified number of) clients themselves
 
 
+## Prerequisites
+
+- Rails 5
 
 ## Installation & Setup
 
@@ -23,7 +28,7 @@ Typically, to do this, you might generate a random UUID and ask the front-end de
 
 ## Usage
 
-The Client Manager is automatically hosted at `/client_manager`. There, you can sign in with your superadmin credentials.
+The Client Manager is automatically hosted at `/client_manager`. There, you can sign in with your superadmin credentials and start using the application.
 
 ### Creating Users
 
@@ -38,7 +43,7 @@ Once, signed in, you can create Client Manager Users and specify the maximum num
 
 You can create clients yourself, or let your users create clients. To create a Client, click the server icon in the navigation to go to the Clients page. Then, click the plus sign to create a new client.
 
-![Creating a Client](http://res.cloudinary.com/duswj2lve/image/upload/v1476136539/client-manager-new-client_vh9qcb.png)
+![Creating a Client](http://res.cloudinary.com/duswj2lve/image/upload/v1476136932/client-manager-new-client_vh9qcb.png)
 
 
 
@@ -47,12 +52,13 @@ You can create clients yourself, or let your users create clients. To create a C
 Client applications need to add their generated tokens to the `Header` of every request. For example -
 
 ```javascript
-const myHeaders = new Headers();
-myHeaders.append('client_token', GENERATED_TOKEN_HERE);
+fetch(apiUrl, {
+    method: 'GET',
+    headers: new Headers({ 'client_token': GENERATED_TOKEN_HERE })
+});
 ```
 
 You can access the client making the request within your controllers using the `current_client` helper method.
-
 
 
 ## Contributing & Todo
