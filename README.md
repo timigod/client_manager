@@ -25,9 +25,9 @@ Typically to do this, you might generate a random UUID and ask the front-end dev
 
 #### 1. Add the gem to your Gemfile
 
-Add the following line to your application's Gemfile:
+Add the following line to your application's `Gemfile`:
 
-```
+```ruby
 gem 'client_manager'
 ```
 
@@ -53,7 +53,7 @@ Run the following commant in your terminal:
 rails generate client_manager:install
 ```
 
-This creates a `client_manager.rb` file in your app's initializer's folder & inserts `include ClientManager::Concerns::SetClientByToken` into your `ApplicationController`, to authenticate all requests. You can remove it from that controller and put it in any controller that needs client authentication.
+This creates a `client_manager.rb` file in your app's initializer's folder and inserts `include ClientManager::Concerns::SetClientByToken` into your `ApplicationController` to authenticate all requests. You can remove it from that controller and put it in any controller that needs client authentication.
 
 
 #### 4. Create a SuperAdmin Account
@@ -67,7 +67,7 @@ rake client_manager:superadmin NAME=YOUR_NAME_HERE EMAIL=YOUR_EMAIL_HERE PASSWOR
 For example:
 
 ```
-rake client_manager:superadmin NAME='Timi' EMAIL='timi@example.com' PASSWORD='lol'
+rake client_manager:superadmin NAME=Timi EMAIL=timi@example.com PASSWORD=lol
 ```
 
 All three arguments are required.
@@ -81,9 +81,9 @@ The Client Manager is automatically hosted at `/client_manager`. There, you can 
 
 Once, signed in, you can create Client Manager Users and specify the maximum number of clients they are allowed to create. Users you create will get an email with their password and are required to change this on first sign in.
 
-![Creating a User](http://res.cloudinary.com/duswj2lve/image/upload/v1476136538/client-manager-new-user_dqoyrk.png)
+![Creating a User](http://res.cloudinary.com/duswj2lve/image/upload/v1476137779/client-manager-new-user_dqoyrk.png)
 
-**Note:** Client Manager inherits from your application's `ActionMailer` settings. If you've not set up your application to send emails, client manager emails won't be sent. [Read more about `ActionMailer`](http://api.rubyonrails.org/classes/ActionMailer/Base.html) 
+**Note:** Client Manager inherits from your application's `ActionMailer` settings. If you've not set up your application to send emails, client manager emails won't be sent. [Read more about `ActionMailer`](http://api.rubyonrails.org/classes/ActionMailer/Base.html).
 
 
 #### Creating Clients
@@ -114,7 +114,7 @@ To contribute: fork this repo, write code & make pull request.
 Some of the things I'm looking at doing in the immediate future are:
 - Tests
 - Basic stats: Requests per client over time
-- Rate limiting client request
+- Rate limiting client requests
 
 
 ## License
