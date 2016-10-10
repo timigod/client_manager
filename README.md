@@ -77,7 +77,7 @@ All three arguments are required.
 
 The Client Manager is automatically hosted at `/client_manager`. There, you can sign in with your superadmin credentials and start using the application.
 
-#### Creating Users
+### Creating Users
 
 Once, signed in, you can create Client Manager Users and specify the maximum number of clients they are allowed to create. Users you create will get an email with their password and are required to change this on first sign in.
 
@@ -86,7 +86,7 @@ Once, signed in, you can create Client Manager Users and specify the maximum num
 **Note:** Client Manager inherits from your application's `ActionMailer` settings. If you've not set up your application to send emails, client manager emails won't be sent. [Read more about `ActionMailer`](http://api.rubyonrails.org/classes/ActionMailer/Base.html).
 
 
-#### Creating Clients
+### Creating Clients
 
 You can create clients yourself, or let your users create clients. To create a Client, click the server icon in the navigation to go to the Clients page. Then, click the plus sign to create a new client.
 
