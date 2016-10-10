@@ -14,7 +14,7 @@ module ClientManager
     end
 
     def index
-      @users = User.all.select { |x| x != current_user }
+      @users = User.where.not(id: current_user.id, superadmin: true)
     end
 
     def edit

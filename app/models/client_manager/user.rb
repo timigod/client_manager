@@ -18,6 +18,10 @@ module ClientManager
       clients.count
     end
 
+    def self.create_superadmin(name, email, password)
+      User.create(name: name, email: email, password: password, superadmin: true, maximum_number_of_clients: nil, password_changed: true)
+    end
+
     private
 
     def password_exists?

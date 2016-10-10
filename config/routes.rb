@@ -1,5 +1,5 @@
 ClientManager::Engine.routes.draw do
-  root to: 'users#index'
+  root to: 'sessions#login'
   get 'login', to: 'sessions#login'
   get 'logout', to: 'sessions#logout'
   post 'login_attempt', to: 'sessions#login_attempt'
