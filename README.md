@@ -55,6 +55,12 @@ rails generate client_manager:install
 
 This creates a `client_manager.rb` file in your app's initializer's folder and inserts `include ClientManager::Concerns::SetClientByToken` into your `ApplicationController` to authenticate all requests. You can remove it from that controller and put it in any controller that needs client authentication.
 
+**Note** if your app is an API-only application, Client Manager will do the following:
+- Remove `config.api_only = true` from `application.rb`
+- Add `config.middleware.use ActionDispatch::Flash` to `application.rb`
+- Uncomment `# require "sprockets/railtie"` in `application.rb`
+
+In your `client_manager.rb` file, you need to set `config.token_secret` (to a random secure UUID). It's set to nil by default and would raise an error if you try to create clients without setting it.
 
 #### 4. Create a SuperAdmin Account
 
