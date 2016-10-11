@@ -38,6 +38,13 @@ module ClientManager
       end
     end
 
+    def ignore_mailer_failure
+      application do
+        "config.action_mailer.raise_delivery_errors = false"
+      end
+      say_status("insert", "config/application.rb")
+    end
+
     def convert_api_only_to_normal
       if is_rails_api?
         add_action_dispatch_to_application

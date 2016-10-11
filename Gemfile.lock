@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    client_manager (0.1.0.pre.beta.pre.2)
+    client_manager (0.1.0)
       bcrypt
       font-awesome-rails
       growlyflash
