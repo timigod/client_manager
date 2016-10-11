@@ -11,7 +11,7 @@ module ClientManager
     validates_numericality_of :maximum_number_of_clients, allow_nil: true
 
     before_validation :set_temporary_password, unless: :password_exists?
-    before_create :send_registration_email, unless: :is_super_admin?
+    after_create :send_registration_email
     has_many :clients, dependent: :destroy
 
     def client_count
@@ -28,16 +28,14 @@ module ClientManager
       !self.password_digest.blank?
     end
 
-    def is_super_admin?
-      self.superadmin
-    end
-
     def set_temporary_password
       self.password = SecureRandom.hex(6)
     end
 
     def send_registration_email
-      RegistrationMailer.registration_email(self).deliver
+      if !self.superadmin
+        RegistrationMailer.registration_email(self).deliver
+      end
     end
 
   end
