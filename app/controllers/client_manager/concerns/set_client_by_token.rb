@@ -3,7 +3,9 @@ module ClientManager::Concerns::SetClientByToken
 
   included do
     before_action :set_client
-    helper_method :current_client
+    if respond_to?(:helper_method)
+      helper_method :current_client
+    end
   end
 
 
