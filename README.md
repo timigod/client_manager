@@ -2,10 +2,7 @@
 
 # Client Manager
 
-[![Gem](https://img.shields.io/gem/v/formatador.svg?maxAge=2592000)](https://rubygems.org/gems/client_manager)
-
 Client Manager is a mountable Rails (engine) gem that helps identify and authenticate your API clients.
-
 
 ## Motivation
 
