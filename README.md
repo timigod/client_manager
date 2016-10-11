@@ -89,7 +89,7 @@ Once, signed in, you can create Client Manager Users and specify the maximum num
 
 ![Creating a User](http://res.cloudinary.com/duswj2lve/image/upload/v1476137779/client-manager-new-user_dqoyrk.png)
 
-**Note:** Client Manager inherits from your application's `ActionMailer` settings. If you've not set up your application to send emails, client manager emails won't be sent. [Read more about `ActionMailer`](http://api.rubyonrails.org/classes/ActionMailer/Base.html).
+**Note:** Client Manager inherits from your application's `ActionMailer` settings. If you've not set up your application to send emails, client manager emails **WILL NOT** get sent. You can see the email content in your server logs. [Read more about `ActionMailer`](http://api.rubyonrails.org/classes/ActionMailer/Base.html).
 
 
 ### Creating Clients
