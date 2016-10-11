@@ -4,7 +4,7 @@ module ClientManager
     protect_from_forgery with: :exception
 
     def client_manager_current_user
-      @client_manager_current_user ||= session[:client_manager_current_user_id] && User.find_by_id(session[:client_manager_current_user_id])
+      @client_manager_current_user ||= session[:client_manager_current_user_id] && ClientManager::User.find_by_id(session[:client_manager_current_user_id])
     end
 
 

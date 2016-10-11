@@ -1,4 +1,4 @@
-module ClientManagers
+module ClientManager
   class ClientsController < ApplicationController
     before_action :authenticate_user
     before_action :set_client, only: [:edit, :show, :update, :destroy]

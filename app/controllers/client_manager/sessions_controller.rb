@@ -13,10 +13,10 @@ module ClientManager
     end
 
     def login_attempt
-      authorized_user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
+      authorized_user = ClientManager::User.find_by(email: params[:email]).try(:authenticate, params[:password])
 
       if !authorized_user
-        flash[:error] = "Invalid Username or Password"
+        flash[:error] = "Invalid Email or Password"
         redirect_to login_path
       else
         session[:client_manager_current_user_id] = authorized_user.id

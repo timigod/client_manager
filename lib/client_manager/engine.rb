@@ -18,10 +18,6 @@ module ClientManager
         Rails.application.config.paths["db/migrate"] << expanded_path
       end
     end
-
-    initializer "client_manager.assets.precompile" do |app|
-      app.config.assets.precompile += %w(client_manager/*.png)
-    end
   end
 
   class << self
