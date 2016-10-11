@@ -25,10 +25,10 @@ Typically to do this, you might generate a random UUID and ask the front-end dev
 Add the following line to your application's `Gemfile`:
 
 ```ruby
-gem 'client_manager'
+gem 'client_manager', '~> 0.1.0.pre.beta'
 ```
 
-Install your bundle:
+Run:
 
 ```
 bundle install
