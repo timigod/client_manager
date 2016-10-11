@@ -38,7 +38,44 @@ module ClientManager
       end
     end
 
+    def convert_api_only_to_normal
+      if is_rails_api?
+        add_action_dispatch_to_application
+        require_sprockets_railtie
+        remove_api_only_declaration
+      end
+    end
+
     private
+
+
+    def add_action_dispatch_to_application
+      application do
+        "config.middleware.use ActionDispatch::Flash"
+      end
+      say_status("insert", "config/application.rb")
+    end
+
+    def require_sprockets_railtie
+      fname = "config/application.rb"
+
+      if File.exist?(File.join(destination_root, fname))
+        gsub_file 'config/application.rb', '# require "sprockets/railtie"', 'require "sprockets/railtie"'
+      else
+        say_status("skipped", "application.rb not found, cannot add sprockets")
+      end
+    end
+
+    def remove_api_only_declaration
+      fname = "config/application.rb"
+
+      if File.exist?(File.join(destination_root, fname))
+        gsub_file 'config/application.rb', 'config.api_only = true', ''
+      else
+        say_status("skipped", "application.rb not found")
+      end
+    end
+
 
     def parse_file_for_line(filename, str)
       match = false
