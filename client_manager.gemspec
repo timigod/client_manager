@@ -5,7 +5,7 @@ require "client_manager/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "ClientManager"
+  s.name        = "client_manager"
   s.version     = ClientManager::VERSION
   s.authors     = ["Timi Ajiboye"]
   s.email       = ["timi@helloworld.ng"]
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  s.add_dependency "rails", "~> 5.0.0", ">= 5.0.0.1"
+  s.add_dependency "rails", "~> 5.0.0"
   s.add_dependency "growlyflash"
   s.add_dependency "sass-rails"
   s.add_dependency "font-awesome-rails"

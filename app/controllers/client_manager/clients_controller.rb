@@ -1,11 +1,11 @@
-module ClientManager
+module ClientManagers
   class ClientsController < ApplicationController
     before_action :authenticate_user
     before_action :set_client, only: [:edit, :show, :update, :destroy]
     layout "client_manager/none", only: [:new, :show]
 
     def index
-      @clients = Client.where(user_id: client_manager_current_user.id)
+      @clients = ClientManager::Client.where(user_id: client_manager_current_user.id)
     end
 
     def new
@@ -36,7 +36,7 @@ module ClientManager
 
 
     def set_client
-      @client = Client.find(params[:id])
+      @client = ClientManager::Client.find(params[:id])
     end
 
     def client_params

@@ -10,11 +10,11 @@ module ClientManager
     layout "client_manager/none", only: [:new, :edit]
 
     def new
-      @user = User.new
+      @user = ClientManager::User.new
     end
 
     def index
-      @users = User.where.not(id: client_manager_current_user.id, superadmin: true)
+      @users = ClientManager::User.where.not(id: client_manager_current_user.id, superadmin: true)
     end
 
     def edit
@@ -35,7 +35,7 @@ module ClientManager
     end
 
     def create
-      @user = User.new(user_params)
+      @user = ClientManager::User.new(user_params)
       if @user.save
         flash[:success] = "User successfully created"
       else
@@ -107,7 +107,7 @@ module ClientManager
     end
 
     def set_user
-      @user = User.find(params[:id])
+      @user = ClientManager::User.find(params[:id])
     end
 
     def user_params
