@@ -16,9 +16,10 @@ module ClientManager::Concerns::SetClientByToken
   private
 
   def set_client
-    if !request.headers["HTTP_CLIENT_TOKEN"].blank?
+    client_token = request.headers["HTTP_CLIENT_TOKEN"] || params["client-token"]
+    if !(client_token.blank?)
       begin
-        decoded = JWT.decode request.headers["HTTP_CLIENT_TOKEN"], ClientManager.token_secret, true, {:algorithm => 'HS256'}
+        decoded = JWT.decode client_token, ClientManager.token_secret, true, {:algorithm => 'HS256'}
       rescue JWT::DecodeError
         return unauthorized
       end

@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = ClientManager::VERSION
   s.authors     = ["Timi Ajiboye"]
   s.email       = ["timi@helloworld.ng"]
-  s.homepage    = "https://github.com/timigod/client-manager"
+  s.homepage    = "https://github.com/timigod/client_manager"
   s.summary     = "Simple gem/engine to manage clients and their tokens for your Rails 5 API."
   s.description = "This gem provides views to add users (probably front-end or mobile developers) to your Rails 5 so they can create clients and manage tokens. With this, you can authenticate all requests and eventually track usage by each client."
   s.license     = "MIT"
